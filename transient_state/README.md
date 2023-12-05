@@ -1,16 +1,14 @@
-# transient_state
+# Steady/Transient States on Flutter with Bloc
 
-A new Flutter project.
+Testing the steady/transient states. More info [here](https://en.wikipedia.org/wiki/Steady_state) and [here](https://en.wikipedia.org/wiki/Transient_state).
 
-## Getting Started
+The main idea is to have two type of states: steady states, which should cause a rebuild (e.g. from loading to loaded), and transient states, which should not trigger an entire rebuild, but instead make small UI changes (e.g. increase a progress indicator) or interact with other parts of the system.
 
-This project is a starting point for a Flutter application.
+## Problem
+[Will be added soon... or not]
 
-A few resources to get you started if this is your first Flutter project:
+## Solution
+[Will be added soon... or not]
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Demo
+![](docs/demo.mov)
