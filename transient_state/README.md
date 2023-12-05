@@ -11,4 +11,4 @@ The main idea is to have two type of states: steady states, which should cause a
 [Will be added soon... or not]
 
 ## Demo
-![](./docs/demo.mp4)
+https://github.com/kelvinwieth/pocs/assets/79933699/04936d1c-d3cc-4718-b949-12bb79c804f2
