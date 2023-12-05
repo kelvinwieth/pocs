@@ -11,4 +11,4 @@ The main idea is to have two type of states: steady states, which should cause a
 [Will be added soon... or not]
 
 ## Demo
-![](docs/demo.mov)
+![](./docs/demo.mp4)
