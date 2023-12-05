@@ -23,7 +23,14 @@ class _TodosScreenState extends State<TodosScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TodosBloc, TodosState>(
+    return BlocConsumer<TodosBloc, TodosState>(
+      listenWhen: (_, current) => current.isTransient,
+      listener: (context, state) {
+        try {
+          context.showSnack((state as dynamic).message); // 😎
+        } catch (_) {}
+      },
+      buildWhen: (_, current) => current.isSteady,
       builder: (_, state) {
         return switch (state) {
           TodosLoading _ => const LoadingView(),
@@ -64,31 +71,23 @@ class LoadedView extends StatelessWidget {
           bloc.add(event);
         },
       ),
-      body: BlocListener<TodosBloc, TodosState>(
-        listenWhen: (_, current) => current.isTransient,
-        listener: (context, state) {
-          try {
-            context.showSnack((state as dynamic).message); // 😎
-          } catch (_) {}
-        },
-        child: ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: todos.length,
-          itemBuilder: (_, index) => Card(
-            child: ListTile(
-              title: Text(todos[index]),
-              trailing: IconButton(
-                onPressed: () {
-                  final bloc = context.read<TodosBloc>();
-                  final event = RemoveTodo(todos[index]);
-                  bloc.add(event);
-                },
-                icon: const Icon(Icons.delete),
-              ),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: todos.length,
+        itemBuilder: (_, index) => Card(
+          child: ListTile(
+            title: Text(todos[index]),
+            trailing: IconButton(
+              onPressed: () {
+                final bloc = context.read<TodosBloc>();
+                final event = RemoveTodo(todos[index]);
+                bloc.add(event);
+              },
+              icon: const Icon(Icons.delete),
             ),
           ),
-          separatorBuilder: (_, __) => const SizedBox(height: 8),
         ),
+        separatorBuilder: (_, __) => const SizedBox(height: 8),
       ),
     );
   }
